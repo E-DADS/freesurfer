@@ -71,7 +71,7 @@ RUN apt-get update -qq \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && echo "Downloading FreeSurfer ..." \
     && mkdir -p /opt/freesurfer \
-    && curl -fsSL --retry 5 ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.1/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz \
+    && curl -fsSL --retry 5 ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.1.1/freesurfer-linux-centos8_x86_64-7.1.1.tar.gz \
     | tar -xz -C /opt/freesurfer --strip-components 1 \
          --exclude='freesurfer/average/mult-comp-cor' \
          --exclude='freesurfer/lib/cuda' \
