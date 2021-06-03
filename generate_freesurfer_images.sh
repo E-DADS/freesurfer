@@ -39,7 +39,8 @@
 #
 ###############################################################################
 
-image="kaczmarj/neurodocker:master@sha256:936401fe8f677e0d294f688f352cbb643c9693f8de371475de1d593650e42a66"
+# image="kaczmarj/neurodocker:master@sha256:936401fe8f677e0d294f688f352cbb643c9693f8de371475de1d593650e42a66"
+image="repronim/neurodocker:master"
 
 # Generate a dockerfile for building BIDS-Apps Freesurfer container
 docker run --rm ${image} generate docker \
@@ -47,7 +48,7 @@ docker run --rm ${image} generate docker \
   --pkg-manager apt \
   --install tcsh bc tar libgomp1 perl-modules wget curl \
     libsm-dev libx11-dev libxt-dev libxext-dev libglu1-mesa libpython2.7-stdlib\
-  --freesurfer version=6.0.1 install_path=/opt/freesurfer \
+  --freesurfer version=7.1.1 install_path=/opt/freesurfer \
   --miniconda use_env=base conda_install="python=3 pip pandas setuptools pandas=0.21.0" pip_install="nibabel" \
   --run-bash 'curl -sL https://deb.nodesource.com/setup_6.x | bash -' \
   --install nodejs \
@@ -79,7 +80,7 @@ docker run --rm ${image} generate singularity \
   --pkg-manager apt \
   --install tcsh bc tar libgomp1 perl-modules wget curl \
     libsm-dev libx11-dev libxt-dev libxext-dev libglu1-mesa libpython2.7-stdlib\
-  --freesurfer version=6.0.1 install_path=/opt/freesurfer \
+  --freesurfer version=7.1.1 install_path=/opt/freesurfer \
   --miniconda use_env=base conda_install="python=3 pip pandas setuptools pandas=0.21.0" pip_install="nibabel" \
   --run-bash 'curl -sL https://deb.nodesource.com/setup_6.x | bash -' \
   --install nodejs \

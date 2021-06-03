@@ -3,9 +3,9 @@
 This app implements surface reconstruction using Freesurfer. It reconstructs the surface for each subject individually and then
 creates a study specific template. In case there are multiple sessions the Freesurfer longitudinal pipeline is used (creating subject specific templates) unless instructed to combine data across sessions.
 
-The current Freesurfer version is based on: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+The current Freesurfer version is based on: `freesurfer-linux-centos8_x86_64-7.1.1.tar.gz`
 
-The output of the pipeline consist of the SUBJECTS_DIR created during the analysis.
+The output of the pipeline consists of the SUBJECTS_DIR created during the analysis.
 
 ### Documentation
  - [Surface reconstruction](https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all)
