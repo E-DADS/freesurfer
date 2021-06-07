@@ -7,7 +7,7 @@
 # 
 #     https://github.com/ReproNim/neurodocker
 # 
-# Timestamp: 2021/06/06 14:03:47 UTC
+# Timestamp: 2021/06/06 14:03:48 UTC
 
 Bootstrap: docker
 From: ubuntu:xenial
@@ -69,7 +69,7 @@ apt-get clean
 rm -rf /var/lib/apt/lists/*
 echo "Downloading FreeSurfer ..."
 mkdir -p /opt/freesurfer
-curl -fsSL --retry 5 ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.1.1/freesurfer-linux-centos8_x86_64-7.1.1.tar.gz \
+curl -fsSL --retry 5 https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.1.1/freesurfer-linux-centos6_x86_64-7.1.1.tar.gz \
 | tar -xz -C /opt/freesurfer --strip-components 1 \
   --exclude='freesurfer/average/mult-comp-cor' \
   --exclude='freesurfer/lib/cuda' \
@@ -168,7 +168,7 @@ echo '{
 \n    [
 \n      "freesurfer",
 \n      {
-\n        "version": "6.0.1",
+\n        "version": "7.1.1",
 \n        "install_path": "/opt/freesurfer"
 \n      }
 \n    ],
