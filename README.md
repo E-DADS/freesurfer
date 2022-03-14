@@ -42,6 +42,7 @@ This App has the following command line arguments:
                                       [{area,volume,thickness,thicknessstd,meancurv,gauscurv,foldind,curvind} ...]]
                       [-v] [--bids_validator_config BIDS_VALIDATOR_CONFIG]
                       [--skip_bids_validator] [--3T {true,false}]
+		      [--notalairach {false,true}] [--cw256 {false,true}]
                       bids_dir output_dir {participant,group1,group2}
 
         FreeSurfer recon-all + custom template generation.
@@ -130,6 +131,12 @@ This App has the following command line arguments:
 	  --3T {true,false}     enables the two 3T specific options that recon-all
 	  			supports: nu intensity correction params, and the 
 				special schwartz atlas
+	  --notalairach {false,true} 
+	                        if set to true, skips the recon-all Talairach 
+				transform computation
+	  --cw256 {false,true} 
+	                        if set to true, mri_convert conforms images with a 
+				FOV > 256 to dimensions of 256^3
 
 #### Participant level
 To run it in participant level mode (for one participant):
