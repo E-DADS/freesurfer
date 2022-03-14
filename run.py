@@ -112,11 +112,11 @@ parser.add_argument('--3T',
                     choices = ['true', 'false'],
                     default = 'true')
 parser.add_argument('--notalairach',
-                    help='if set to true, skisp the recon-all Talairach transform computation',
+                    help='if set to true, skips the recon-all Talairach transform computation',
                     choices = ['true', 'false'],
                     default = 'false')
 parser.add_argument('--cw256',
-                    help='if set to true, mri_convert conforms images with a FOV > 256 to dimensions of 256^3.',
+                    help='if set to true, mri_convert conforms images with a FOV > 256 to dimensions of 256^3',
                     choices = ['true', 'false'],
                     default = 'false')
 args = parser.parse_args()
