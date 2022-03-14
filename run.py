@@ -111,6 +111,14 @@ parser.add_argument('--3T',
                     help='enables the two 3T specific options that recon-all supports: nu intensity correction params, and the special schwartz atlas',
                     choices = ['true', 'false'],
                     default = 'true')
+parser.add_argument('--notalairach',
+                    help='if set to true, skisp the recon-all Talairach transform computation',
+                    choices = ['true', 'false'],
+                    default = 'false')
+parser.add_argument('--cw256',
+                    help='if set to true, mri_convert conforms images with a FOV > 256 to dimensions of 256^3.',
+                    choices = ['true', 'false'],
+                    default = 'false')
 args = parser.parse_args()
 
 
@@ -235,6 +243,12 @@ if args.analysis_level == "participant":
                         if args.qcache:
                             input_args += ' -qcache'
 
+                            if args.cw256:
+                            input_args += ' -cw256'
+
+                        if args.notalairach:
+                            input_args += ' -notalairach'
+
                         for T1 in T1s:
                             if (round(max(nibabel.load(T1).header.get_zooms()), 1) < 1.0 and args.hires_mode == "auto") or args.hires_mode == "enable":
                                 input_args += " -hires"
@@ -351,6 +365,12 @@ if args.analysis_level == "participant":
                 if args.qcache:
                     input_args += " -qcache"
 
+                if args.cw256:
+                    input_args += ' -cw256'
+
+                if args.notalairach:
+                    input_args += ' -notalairach'                    
+                    
                 for T1 in T1s:
                     if (round(max(nibabel.load(T1).header.get_zooms()), 1) < 1.0 and args.hires_mode == "auto") or args.hires_mode == "enable":
                         input_args += " -hires"
@@ -424,6 +444,12 @@ if args.analysis_level == "participant":
 
             if args.qcache:
                 input_args += " -qcache"
+
+            if args.cw256:
+                input_args += ' -cw256'
+
+            if args.notalairach:
+                input_args += ' -notalairach'
 
             for T1 in T1s:
                 if (round(max(nibabel.load(T1).header.get_zooms()), 1) < 1.0 and args.hires_mode == "auto") or args.hires_mode == "enable":
