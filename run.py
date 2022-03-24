@@ -243,7 +243,7 @@ if args.analysis_level == "participant":
                         if args.qcache:
                             input_args += ' -qcache'
 
-                            if args.cw256:
+                        if args.cw256:
                             input_args += ' -cw256'
 
                         if args.notalairach:
