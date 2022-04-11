@@ -130,9 +130,6 @@ This App has the following command line arguments:
 	  --3T {true,false}     enables the two 3T specific options that recon-all
 	  			supports: nu intensity correction params, and the 
 				special schwartz atlas
-	  --notalairach {false,true} 
-	                        if set to true, skips the recon-all Talairach 
-				transform computation
 	  --cw256 {false,true} 
 	                        if set to true, mri_convert conforms images with a 
 				FOV > 256 to dimensions of 256^3
