@@ -41,8 +41,7 @@ This App has the following command line arguments:
                       [--measurements {area,volume,thickness,thicknessstd,meancurv,gauscurv,foldind,curvind}
                                       [{area,volume,thickness,thicknessstd,meancurv,gauscurv,foldind,curvind} ...]]
                       [-v] [--bids_validator_config BIDS_VALIDATOR_CONFIG]
-                      [--skip_bids_validator] [--3T {true,false}]
-		      [--notalairach {false,true}] [--cw256 {false,true}]
+                      [--skip_bids_validator] [--3T {true,false}] [--cw256 {false,true}]
                       bids_dir output_dir {participant,group1,group2}
 
         FreeSurfer recon-all + custom template generation.
