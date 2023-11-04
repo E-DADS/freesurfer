@@ -1,11 +1,13 @@
-## Freesurfer recon-all BIDS App
+## Freesurfer 7.1.1 recon-all BIDS App
+
+Forked from [bids-apps/freesurfer](https://github.com/bids-apps/freesurfer) then modified for FreeSurfer 7.1.1 by [Neil Oxtoby](https://github.com/noxtoby) and [Damiano Archetti](https://github.com/4sputnik) on behalf of [E-DADS](https://github.com/E-DADS).
+
 ### Description
-This app implements surface reconstruction using Freesurfer. It reconstructs the surface for each subject individually and then
-creates a study specific template. In case there are multiple sessions the Freesurfer longitudinal pipeline is used (creating subject specific templates) unless instructed to combine data across sessions.
+This app implements the `recon-all` pipeline of Freesurfer for each subject individually and creates a study specific template. In case there are multiple sessions the Freesurfer longitudinal pipeline is used (creating subject specific templates) unless instructed to combine data across sessions.
 
-The current Freesurfer version is based on: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+Freesurfer version: [freesurfer-linux-centos8_x86_64-7.1.1.tar.gz](https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.1.1/freesurfer-linux-centos8_x86_64-7.1.1.tar.gz)
 
-The output of the pipeline consist of the SUBJECTS_DIR created during the analysis.
+The output of the pipeline consist of the `SUBJECTS_DIR` created during the analysis.
 
 ### Documentation
  - [Surface reconstruction](https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all)
@@ -22,7 +24,7 @@ https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferMethodsCitation
 This App has the following command line arguments:
 
 
-        $ docker run -ti --rm bids/freesurfer --help
+        $ docker run -ti --rm E-DADS/freesurfer --help
         usage: run.py [-h]
                       [--participant_label PARTICIPANT_LABEL [PARTICIPANT_LABEL ...]]
                       [--session_label SESSION_LABEL [SESSION_LABEL ...]]
@@ -123,16 +125,14 @@ This App has the following command line arguments:
           -v, --version         show program's version number and exit
           --bids_validator_config BIDS_VALIDATOR_CONFIG
                                 JSON file specifying configuration of bids-validator:
-                                See https://github.com/INCF/bids-validator for more
-                                info
-          --skip_bids_validator
-                                skips bids validation
-	  --3T {true,false}     enables the two 3T specific options that recon-all
-	  			supports: nu intensity correction params, and the 
-				special schwartz atlas
-	  --cw256 {false,true} 
-	                        if set to true, mri_convert conforms images with a 
-				FOV > 256 to dimensions of 256^3
+                                See https://github.com/INCF/bids-validator for more info
+          --skip_bids_validator skips bids validation
+          --3T {true,false}     enables the two 3T specific options that recon-all
+                                supports: nu intensity correction params, and the 
+                                special schwartz atlas
+          --cw256 {false,true} 
+                                if set to true, mri_convert conforms images with a 
+                                FOV > 256 to dimensions of 256^3
 
 #### Participant level
 To run it in participant level mode (for one participant):
@@ -141,7 +141,7 @@ To run it in participant level mode (for one participant):
 		-v /Users/filo/data/ds005:/bids_dataset:ro \
 		-v /Users/filo/outputs:/outputs \
 		-v /Users/filo/freesurfer_license.txt:/license.txt \
-		bids/freesurfer \
+		E-DADS/freesurfer \
 		/bids_dataset /outputs participant --participant_label 01 \
 		--license_file "/license.txt"
 
@@ -153,28 +153,27 @@ group level analyses can be run.
 ##### Template creation
 To create a study specific template run:
 
-		docker run -ti --rm \
-		-v /Users/filo/data/ds005:/bids_dataset:ro \
-		-v /Users/filo/outputs:/outputs \
-		-v /Users/filo/freesurfer_license.txt:/license.txt \
-		bids/freesurfer \
-		/bids_dataset /outputs group1 \
-		--license_file "/license.txt"
+                docker run -ti --rm \
+                -v /Users/filo/data/ds005:/bids_dataset:ro \
+                -v /Users/filo/outputs:/outputs \
+                -v /Users/filo/freesurfer_license.txt:/license.txt \
+                E-DADS/freesurfer \
+                /bids_dataset /outputs group1 \
+                --license_file "/license.txt"
 
 ##### Stats and quality tables export
 To export tables with aggregated measurements within regions of
 cortical parcellation and subcortical segementation, and a table with
- euler numbers (a quality metric, see
- [Rosen et. al, 2017](https://www.biorxiv.org/content/early/2017/10/01/125161))
- run:
+euler numbers (a quality metric, see [Rosen et. al, 2017](https://www.biorxiv.org/content/early/2017/10/01/125161)),
+run:
 
-		docker run -ti --rm \
-		-v /Users/filo/data/ds005:/bids_dataset:ro \
-		-v /Users/filo/outputs:/outputs \
-		-v /Users/filo/freesurfer_license.txt:/license.txt \
-		bids/freesurfer \
-		/bids_dataset /outputs group2 \
-		--license_file "/license.txt"
+                docker run -ti --rm \
+                -v /Users/filo/data/ds005:/bids_dataset:ro \
+                -v /Users/filo/outputs:/outputs \
+                -v /Users/filo/freesurfer_license.txt:/license.txt \
+                E-DADS/freesurfer \
+                /bids_dataset /outputs group2 \
+                --license_file "/license.txt"
 Also see the *--parcellations* and *--measurements* arguments.
 
 This step writes ouput into `<output_dir>/00_group2_stats_tables/`. E.g.:
