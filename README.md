@@ -1,6 +1,8 @@
 ## Freesurfer 7.1.1 recon-all BIDS App
 
-Forked from [bids-apps/freesurfer](https://github.com/bids-apps/freesurfer) then modified for FreeSurfer 7.1.1 by [Neil Oxtoby](https://github.com/noxtoby) and [Damiano Archetti](https://github.com/4sputnik) on behalf of [E-DADS](https://github.com/E-DADS).
+Forked from [bids-apps/freesurfer](https://github.com/bids-apps/freesurfer) then modified for FreeSurfer 7.1.1 by [Neil Oxtoby](https://github.com/noxtoby) and [Damiano Archetti](https://github.com/4sputnik) on behalf of [E-DADS](https://github.com/E-DADS) as part of [E_DADS tools](https://e-dads.github.io/tools/).
+
+To get the [corresponding docker container](https://hub.docker.com/r/noxtoby/edads/tags): `docker pull noxtoby/edads:freesurfer7p1p1`
 
 ### Description
 This app implements the `recon-all` pipeline of Freesurfer for each subject individually and creates a study specific template. In case there are multiple sessions the Freesurfer longitudinal pipeline is used (creating subject specific templates) unless instructed to combine data across sessions.
