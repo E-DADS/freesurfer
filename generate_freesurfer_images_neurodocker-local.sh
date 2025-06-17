@@ -40,7 +40,7 @@
 ###############################################################################
 
 # image="repronim/neurodocker@sha256:291c40c8efce92260822b6ef40f88c300d77d09f08d577f55c46ef7c4b43d2e5"
-image="noxtoby/neurodocker:0.9.4"
+image="noxtoby/neurodocker:2.0.0"
 
 # Generate a dockerfile for building BIDS-Apps Freesurfer container
 # docker run --rm ${image}
@@ -51,9 +51,9 @@ neurodocker generate docker \
     libsm-dev libx11-dev libxt-dev libxext-dev libglu1-mesa libpython2.7-stdlib\
   --freesurfer version=7.1.1 install_path=/opt/freesurfer \
   --miniconda version="latest" env_name=base conda_install="python=3 pip pandas setuptools" pip_install="nibabel" \
-  --run-bash 'curl -sL https://deb.nodesource.com/setup_14.x | bash -' \
+  --run-bash 'curl -sL https://deb.nodesource.com/setup_23.x | bash -' \
   --install nodejs \
-  --run-bash 'npm install -g bids-validator' \
+  --run-bash 'pip install bids-validator' \
   --env FSLDIR=/usr/share/fsl/5.0 FSLOUTPUTTYPE=NIFTI_GZ \
         FSLMULTIFILEQUIT=TRUE POSSUMDIR=/usr/share/fsl/5.0 LD_LIBRARY_PATH=/usr/lib/fsl/5.0:$LD_LIBRARY_PATH \
         FSLTCLSH=/usr/bin/tclsh FSLWISH=/usr/bin/wish FSLOUTPUTTYPE=NIFTI_GZ \

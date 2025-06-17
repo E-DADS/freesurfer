@@ -115,8 +115,14 @@ parser.add_argument('--cw256',
                     help='if set to true, mri_convert conforms images with a FOV > 256 to dimensions of 256^3',
                     choices = ['true', 'false'],
                     default = 'false')
+parser.add_argument('--notal_check',
+                    help='if set to true, adds -notal-check option after -all',
+                    action = 'store_true')
 args = parser.parse_args()
 
+
+if args.notal_check:
+    args.stages += ["notal-check"] # I think this should work
 
 three_T = vars(args)['3T']
 
