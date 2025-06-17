@@ -45,7 +45,7 @@ image="noxtoby/neurodocker:0.9.4"
 # Generate a dockerfile for building BIDS-Apps Freesurfer container
 # docker run --rm ${image}
 neurodocker generate docker \
-  --base-image ubuntu:xenial \
+  --base-image ubuntu:jammy \
   --pkg-manager apt \
   --install tcsh bc tar libgomp1 perl-modules wget curl \
     libsm-dev libx11-dev libxt-dev libxext-dev libglu1-mesa libpython2.7-stdlib\
